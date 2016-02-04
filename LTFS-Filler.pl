@@ -34,13 +34,13 @@ sub wanted {
         $dirSize = $dirSize + $size;
         # if maximum directory size has been reached, create new one.
         if ($dirSize > $dirMaxSize) {
-            print $OUTFILE "VOLUME $bucketNum total size: " . (($dirSize-$size)/1e12) . "TB\n";
+            print $OUTFILE "# NOTICE: VOLUME $bucketNum total size: " . (($dirSize-$size)/1e12) . "TB\n";
             $dirSize = $size;
             $bucketNum++;
         }
         # We have a file, so copy it to correct bucket directory.
         print $OUTFILE "mv \"$file\"  \"$bucketNum/$file\"\n";
     } else {
-        print $OUTFILE "# ERROR! $file is neither file nor directory.\n";
+        print $OUTFILE "# ERROR: $file is neither file nor directory.\n";
     }
 }
