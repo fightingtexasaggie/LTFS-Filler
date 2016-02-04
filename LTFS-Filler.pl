@@ -14,6 +14,7 @@ my @searchdirs;
 $searchdirs[0]=$ARGV[0];
 open ($OUTFILE, ">packed.sh.txt");
 find(\&wanted, @searchdirs);
+print $OUTFILE "VOLUME $bucketNum total size: " . ($dirSize/1e12) . "TB\n";
 close $OUTFILE;
 
 sub wanted {
