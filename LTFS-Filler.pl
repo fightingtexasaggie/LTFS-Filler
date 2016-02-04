@@ -26,7 +26,7 @@ sub wanted {
     my $file = $File::Find::name;
     # create directory
     if (-d $_) {
-        print $OUTFILE "mkdir \"$bucketNum/$file\"\n";
+        print $OUTFILE "mkdir -p \"$bucketNum/$file\"\n";
     } elsif (-f) {
         # get filesize on current file from stat array
         my $size= (stat)[7];
