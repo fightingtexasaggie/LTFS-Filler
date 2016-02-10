@@ -24,9 +24,9 @@ sub wanted {
         # $File::Find::name is the complete pathname to the file.
 
     my $file = $File::Find::name;
-    # create directory
     if (-d $_) {
-        print $OUTFILE "mkdir -p \"$bucketNum/$file\"\n";
+        # Create directory
+        print $OUTFILE "mkdir -p '" . $bucketNum . '/' . $file . "\'" . "\n";
     } elsif (-f) {
         # get filesize on current file from stat array
         my $size= (stat)[7];
@@ -39,7 +39,7 @@ sub wanted {
             $bucketNum++;
         }
         # We have a file, so copy it to correct bucket directory.
-        print $OUTFILE "mv \"$file\"  \"$bucketNum/$file\"\n";
+        print $OUTFILE "mv \'$file\'  \'$bucketNum/$file\'\n";
     } else {
         print $OUTFILE "# ERROR: $file is neither file nor directory.\n";
     }
